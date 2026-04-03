@@ -1,0 +1,46 @@
+{
+    "Id": "rowletrochi.zalgo_Portal",
+    "InputItems": [
+        {
+            "Id": ["(F)2048"],
+            "Quantity": 1
+        },
+        {
+            "Id": ["(O)306"],
+            "Quantity": 1
+        },
+        {
+            "Id": ["(O)229"],
+            "Quantity": 1
+        }
+    ],
+    "MinutesToProcess": 120,
+    "Script": "
+      pause 850/
+      playSound UFO/
+      pause 500/
+      playSound thunder_small/
+      pause 300/
+      screenShake 1 1000/
+      pause 980/
+      screenShake 2 1000/
+      pause 480/
+      playSound thunder_small/
+      pause 500/
+      screenShake 4 1000/
+      pause 980/
+      screenShake 6 9000/
+      playSound thunder/
+      pause 1200/
+      playSound thunder/
+      pause 450/
+      playSound thunder/
+      pause 5000/
+      --playSound metal_tap/
+      --tas x y w h dur 1 1 tilex tiley flicker flip y 0 1 0 0 0/
+      --pause time/
+      --tas x y w h dur 1 1 tilex tiley flicker flip y 0 1 0 0 0/
+      --pause time/
+      --etc
+    "
+}

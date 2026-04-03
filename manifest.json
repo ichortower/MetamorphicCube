@@ -1,0 +1,16 @@
+{
+  "Name": "Metamorphic Cube",
+  "Author": "ichortower",
+  "Description": "Use a magical machine to transform and combine your items into new ones.",
+  "Version": "%ProjectVersion%",
+  "UniqueID": "ichortower.MetamorphicCube",
+  "EntryDll": "MetamorphicCube.dll",
+  "MinimumApiVersion": "4.1.10",
+  "UpdateKeys": ["Nexus:-1", "GitHub:ichortower/MetamorphicCube"],
+  "Dependencies": [
+      {
+          "UniqueID": "ichortower.SecretNoteFramework",
+          "IsRequired": false
+      }
+  ]
+}

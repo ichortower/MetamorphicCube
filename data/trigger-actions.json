@@ -1,0 +1,14 @@
+{
+    "{{ModId}}_TriggerActionInitial": {
+        "Id": "{{ModId}}_TriggerActionInitial",
+        "Trigger": "DayStarted",
+        "Condition": "{{ModId}}_COMMUNITY_ROOMS_COMPLETED 3",
+        "Action": "AddMail Host {{ModId}}_MailInitial now"
+    },
+    "{{ModId}}_TriggerActionFollowup": {
+        "Id": "{{ModId}}_TriggerActionFollowup",
+        "Trigger": "DayStarted",
+        "Condition": "{{ModId}}_COMMUNITY_ROOMS_COMPLETED 4, PLAYER_HAS_MAIL Host {{ModId}}_MailInitial Received",
+        "Action": "AddMail Host {{ModId}}_MailFollowup now"
+    }
+}

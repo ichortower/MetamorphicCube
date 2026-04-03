@@ -1,0 +1,18 @@
+{
+    "cube.name": "Metamorphic Cube",
+    "cube.description": "An odd, gently thrumming magic box. Place items inside to transmute them into something new.",
+    "recipebook.name": "Transmutation For Novices",
+    "recipebook.description": "It's lighter than it looks. It never seems to have the same number of pages.",
+    "mail1.title": "A Magical Cube",
+    "mail1.textcontent": "@,^^I have enclosed a gift for you: a Metamorphic Cube, the last work of the great wizard Horadrus. Its magic was intended to help mundane folk; I trust that you will find it useful in your line of work.^^The Cube can transmute items into new ones, as long as you follow the recipes. Only... forgive me, but I have misplaced the book that contains them.^^When I find it, I will pass it on to you. In the meantime, why not experiment?^^-M. Rasmodius, Wizard",
+    "mail2.title": "Cube Recipes",
+    "mail2.textcontent": "@,^^I have located the Metamorphic Cube recipe book I mentioned previously. Please find it enclosed.^^-M. Rasmodius, Wizard",
+    "secretnote.title.1": "Madman's diary",
+    "secretnote.contents.1": "They all laughed... they said it couldn't be done! But no matter; transcendence will be mine at last!^^Now that I have constructed the cube, all I need are the three sacred items. The cube will take care of the rest.^^Trust the cube. Trust.",
+    "secretnote.title.2": "?????",
+
+    // hello, translators! these are puzzles. you should ask ichortower about them.
+    "secretnote.contents.2": "^^p rccszc rnpkc rnek qcoicnqcpn^^lu dzcycn mhloc li kpq pffcpn",
+    "secretnote.contents.3": "^^ilom roda nely bo en mahin seyola idi dalus neme",
+    "secretnote.contents.4": "^^ihxc mib nehj mibs xchfcs^^mib vsc dbsc fi aeh",
+}

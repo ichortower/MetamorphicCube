@@ -1,0 +1,735 @@
+{
+    /*
+     * Fusion
+     */
+
+    "{{ModId}}_LargeEgg": {
+        "Id": "{{ModId}}_LargeEgg",
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.LargeEgg.name}}",
+            "Time": "{{i18n:guidebook.LargeEgg.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.LargeEgg.input.1}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.LargeEgg.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)176 (O)180",
+            "ITEM_ID Target (O)176 (O)180"
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)174", "(O)182"],
+                "Quantity": 1
+            },
+        ],
+        "OutputChooseBehavior": "TryMatchInput",
+        "MinutesToProcess": 20
+    },
+    "{{ModId}}_VoidEgg1": {
+        "Id": "{{ModId}}_VoidEgg1",
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.VoidEgg.name}}",
+            "Time": "{{i18n:guidebook.VoidEgg.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.VoidEgg.input.1}}",
+                "{{i18n:guidebook.VoidEgg.input.2}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.VoidEgg.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)174 (O)182",
+            "ITEM_ID Target (H)70"
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)305"],
+                "Quantity": 1
+            }
+        ],
+        "MatchInputIgnoreIndexes": [1],
+        "MinutesToProcess": 40
+    },
+    "{{ModId}}_VoidEgg2": {
+        "Id": "{{ModId}}_VoidEgg2",
+        // no guidebook entry. recipe 1 explains both
+        "InputItems": [
+            "ITEM_ID Target (O)174 (O)182",
+            "ITEM_ID Target (O)769, ITEM_STACK Target 50"
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)305"],
+                "Quantity": 1
+            }
+        ],
+        "MatchInputIgnoreIndexes": [1],
+        "MinutesToProcess": 40
+    },
+    "{{ModId}}_DinosaurEgg": {
+        "Id": "{{ModId}}_DinosaurEgg",
+        "Precedence": 50,
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.DinosaurEgg.name}}",
+            "Time": "{{i18n:guidebook.DinosaurEgg.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.DinosaurEgg.input.1}}",
+                "{{i18n:guidebook.DinosaurEgg.input.2}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.DinosaurEgg.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)174 (O)182",
+            "ITEM_ID Target (O)174 (O)182",
+            "ITEM_ID Target (O)174 (O)182",
+            "ITEM_ID Target (O)174 (O)182",
+            "ITEM_ID Target (O)174 (O)182",
+            "ITEM_ID Target (O)174 (O)182",
+            "ITEM_OBJECT_TYPE Target Arch"
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)107"],
+                "Quantity": 1
+            }
+        ],
+        "MinutesToProcess": 60
+    },
+    "{{ModId}}_OstrichEgg": {
+        "Id": "{{ModId}}_OstrichEgg",
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.OstrichEgg.name}}",
+            "Time": "{{i18n:guidebook.OstrichEgg.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.OstrichEgg.input.1}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.OstrichEgg.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)174 (O)182",
+            "ITEM_ID Target (O)174 (O)182",
+            "ITEM_ID Target (O)174 (O)182",
+            "ITEM_ID Target (O)174 (O)182",
+            "ITEM_ID Target (O)174 (O)182",
+            "ITEM_ID Target (O)174 (O)182",
+            "ITEM_ID Target (O)174 (O)182",
+            "ITEM_ID Target (O)174 (O)182"
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)289"],
+                "Quantity": 1
+            }
+        ],
+        "MinutesToProcess": 60
+    },
+    "{{ModId}}_LargeMilk": {
+        "Id": "{{ModId}}_LargeMilk",
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.LargeMilk.name}}",
+            "Time": "{{i18n:guidebook.LargeMilk.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.LargeMilk.input.1}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.LargeMilk.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)184",
+            "ITEM_ID Target (O)184"
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)186"],
+                "Quantity": 1
+            },
+        ],
+        "MinutesToProcess": 20
+    },
+    "{{ModId}}_LargeGoatMilk": {
+        "Id": "{{ModId}}_LargeGoatMilk",
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.LargeGoatMilk.name}}",
+            "Time": "{{i18n:guidebook.LargeGoatMilk.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.LargeGoatMilk.input.1}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.LargeGoatMilk.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)436",
+            "ITEM_ID Target (O)436"
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)438"],
+                "Quantity": 1
+            },
+        ],
+        "MinutesToProcess": 20
+    },
+    "{{ModId}}_Hardwood": {
+        "Id": "{{ModId}}_Hardwood",
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.Hardwood.name}}",
+            "Time": "{{i18n:guidebook.Hardwood.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.Hardwood.input.1}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.Hardwood.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)388, ITEM_STACK Target 20"
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)709"],
+                "Quantity": 1
+            }
+        ],
+        "MinutesToProcess": 60
+    },
+    "{{ModId}}_IronBar": {
+        "Id": "{{ModId}}_IronBar",
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.IronBar.name}}",
+            "Time": "{{i18n:guidebook.IronBar.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.IronBar.input.1}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.IronBar.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)334, ITEM_STACK Target 3"
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)335"],
+                "Quantity": 2
+            }
+        ],
+        "MinutesToProcess": 20
+    },
+    "{{ModId}}_GoldBar": {
+        "Id": "{{ModId}}_GoldBar",
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.GoldBar.name}}",
+            "Time": "{{i18n:guidebook.GoldBar.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.GoldBar.input.1}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.GoldBar.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)335, ITEM_STACK Target 3"
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)336"],
+                "Quantity": 2
+            }
+        ],
+        "MinutesToProcess": 20
+    },
+    "{{ModId}}_IridiumBar": {
+        "Id": "{{ModId}}_IridiumBar",
+        "Condition": "PLAYER_HAS_MAIL Host HasSkullKey",
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.IridiumBar.name}}",
+            "Time": "{{i18n:guidebook.IridiumBar.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.IridiumBar.input.1}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.IridiumBar.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)336, ITEM_STACK Target 3"
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)337"],
+                "Quantity": 1
+            }
+        ],
+        "MinutesToProcess": 40
+    },
+    "{{ModId}}_RadioactiveBar": {
+        "Id": "{{ModId}}_RadioactiveBar",
+        "Condition": "PLAYER_HAS_MAIL Current qiCave",
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.RadioactiveBar.name}}",
+            "Time": "{{i18n:guidebook.RadioactiveBar.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.RadioactiveBar.input.1}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.RadioactiveBar.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)337, ITEM_STACK Target 3"
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)910"],
+                "Quantity": 1
+            }
+        ],
+        "MinutesToProcess": 60
+    },
+    "{{ModId}}_GoldenMysteryBox": {
+        "Id": "{{ModId}}_GoldenMysteryBox",
+        "Condition": "PLAYER_HAS_MAIL Host sawQiPlane",
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.GoldenMysteryBox.name}}",
+            "Time": "{{i18n:guidebook.GoldenMysteryBox.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.GoldenMysteryBox.input.1}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.GoldenMysteryBox.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)MysteryBox, ITEM_STACK Target 3"
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)GoldenMysteryBox"],
+                "Quantity": 1
+            }
+        ],
+        "MinutesToProcess": 30
+    },
+    "{{ModId}}_BigChest": {
+        "Id": "{{ModId}}_BigChest",
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.BigChest.name}}",
+            "Time": "{{i18n:guidebook.BigChest.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.BigChest.input.1}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.BigChest.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (BC)130 (BC) 232",
+            "ITEM_ID Target (BC)130 (BC) 232"
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(BC)BigChest", "(BC)BigStoneChest"],
+                "Quantity": 1
+            }
+        ],
+        "OutputChooseBehavior": "TryMatchInput",
+        "MinutesToProcess": 30
+    },
+    "{{ModId}}_QualitySprinkler": {
+        "Id": "{{ModId}}_QualitySprinkler",
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.QualitySprinkler.name}}",
+            "Time": "{{i18n:guidebook.QualitySprinkler.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.QualitySprinkler.input.1}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.QualitySprinkler.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)599, ITEM_STACK Target 2"
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)621"],
+                "Quantity": 1
+            }
+        ],
+        "MinutesToProcess": 40
+    },
+    "{{ModId}}_IridiumSprinkler": {
+        "Id": "{{ModId}}_IridiumSprinkler",
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.IridiumSprinkler.name}}",
+            "Time": "{{i18n:guidebook.IridiumSprinkler.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.IridiumSprinkler.input.1}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.IridiumSprinkler.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)621, ITEM_STACK Target 3"
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)645"],
+                "Quantity": 1
+            }
+        ],
+        "MinutesToProcess": 90
+    },
+    "{{ModId}}_MermaidsPendant": {
+        "Id": "{{ModId}}_MermaidsPendant",
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.MermaidsPendant.name}}",
+            "Time": "{{i18n:guidebook.MermaidsPendant.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.MermaidsPendant.input.1}}",
+                "{{i18n:guidebook.MermaidsPendant.input.2}}",
+                "{{i18n:guidebook.MermaidsPendant.input.3}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.MermaidsPendant.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)103",
+            "ITEM_ID Target (O)392",
+            "ITEM_CONTEXT_TAG Target category_fish"
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)460"],
+                "Quantity": 1
+            }
+        ],
+        "MinutesToProcess": 60
+    },
+    "{{ModId}}_PrismaticShard": {
+        "Id": "{{ModId}}_PrismaticShard",
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.PrismaticShard.name}}",
+            "Time": "{{i18n:guidebook.PrismaticShard.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.PrismaticShard.input.1}}",
+                "{{i18n:guidebook.PrismaticShard.input.2}}",
+                "{{i18n:guidebook.PrismaticShard.input.3}}",
+                "{{i18n:guidebook.PrismaticShard.input.4}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.PrismaticShard.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)60, ITEM_STACK Target 2",
+            "ITEM_ID Target (O)62, ITEM_STACK Target 2",
+            "ITEM_ID Target (O)64, ITEM_STACK Target 2",
+            "ITEM_ID Target (O)66, ITEM_STACK Target 2",
+            "ITEM_ID Target (O)68, ITEM_STACK Target 2",
+            "ITEM_ID Target (O)70, ITEM_STACK Target 2",
+            "ITEM_ID Target (O)72, ITEM_STACK Target 2",
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)74"],
+                "Quantity": 1
+            }
+        ],
+        "MinutesToProcess": 480
+    },
+
+
+    /*
+     * Enhance
+     */
+
+    "{{ModId}}_PlusQualityArtisan": {
+        "Id": "{{ModId}}_PlusQualityArtisan",
+        "GuideBook": {
+            "Category": "Enhance",
+            "Name": "{{i18n:guidebook.PlusQualityArtisan.name}}",
+            "Time": "{{i18n:guidebook.PlusQualityArtisan.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.PlusQualityArtisan.input.1}}",
+                "{{i18n:guidebook.PlusQualityArtisan.input.2}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.PlusQualityArtisan.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_CATEGORY Target -26, !ITEM_ID Target (O)348",
+            "ITEM_ID Target (O)66 (O)62 (O)82 (O)70"
+        ],
+        "OutputItems": [
+            {
+                "MatchInputItemIndex": 0,
+                "IncreaseQuality": true,
+                "Quantity": 1
+            }
+        ],
+        "MinutesToProcess": 480
+    },
+    "{{ModId}}_PlusQualityWine": {
+        "Id": "{{ModId}}_PlusQualityWine",
+        "GuideBook": {
+            "Category": "Enhance",
+            "Name": "{{i18n:guidebook.PlusQualityWine.name}}",
+            "Time": "{{i18n:guidebook.PlusQualityWine.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.PlusQualityWine.input.1}}",
+                "{{i18n:guidebook.PlusQualityWine.input.2}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.PlusQualityWine.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)348",
+            "ITEM_ID Target (O)60 (O)64 (O)72"
+        ],
+        "OutputItems": [
+            {
+                "MatchInputItemIndex": 0,
+                "IncreaseQuality": true,
+                "Quantity": 1
+            }
+        ],
+        "MinutesToProcess": 1440
+    },
+
+    /*
+     * Cycling
+     */
+
+    "{{ModId}}_NextDwarfScroll": {
+        "Id": "{{ModId}}_NextDwarfScroll",
+        "GuideBook": {
+            "Category": "Cycling",
+            "Name": "{{i18n:guidebook.NextDwarfScroll.name}}",
+            "Time": "{{i18n:guidebook.NextDwarfScroll.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.NextDwarfScroll.input.1}}",
+                "{{i18n:guidebook.NextDwarfScroll.input.2}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.NextDwarfScroll.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)96 (O)97 (O)98 (O)99",
+            "ITEM_ID Target (O)86",
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)97", "(O)98", "(O)99", "(O)96"],
+                "Quantity": 1
+            }
+        ],
+        "OutputChooseBehavior": "TryMatchInput",
+        "MatchInputIgnoreIndexes": [1],
+        "MinutesToProcess": 20
+    },
+    "{{ModId}}_NextBasicGeode": {
+        "Id": "{{ModId}}_NextBasicGeode",
+        "GuideBook": {
+            "Category": "Cycling",
+            "Name": "{{i18n:guidebook.NextBasicGeode.name}}",
+            "Time": "{{i18n:guidebook.NextBasicGeode.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.NextBasicGeode.input.1}}",
+                "{{i18n:guidebook.NextBasicGeode.input.2}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.NextBasicGeode.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)538 (O)542 (O)548 (O)549 (O)552 (O)555 (O)556 (O)557 (O)558 (O)566 (O)568 (O)569 (O)571 (O)574 (O)576",
+            "ITEM_ID Target (O)86"
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)542", "(O)548", "(O)549", "(O)552", "(O)555", "(O)556", "(O)557", "(O)558", "(O)566", "(O)568", "(O)569", "(O)571", "(O)574", "(O)576", "(O)538"],
+                "Quantity": 1
+            }
+        ],
+        "OutputChooseBehavior": "TryMatchInput",
+        "MatchInputIgnoreIndexes": [1],
+        "MinutesToProcess": 20
+    },
+    "{{ModId}}_NextFrozenGeode": {
+        "Id": "{{ModId}}_NextFrozenGeode",
+        "GuideBook": {
+            "Category": "Cycling",
+            "Name": "{{i18n:guidebook.NextFrozenGeode.name}}",
+            "Time": "{{i18n:guidebook.NextFrozenGeode.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.NextFrozenGeode.input.1}}",
+                "{{i18n:guidebook.NextFrozenGeode.input.2}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.NextFrozenGeode.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)541 (O)544 (O)545 (O)546 (O)550 (O)551 (O)559 (O)560 (O)561 (O)564 (O)567 (O)572 (O)573 (O)577",
+            "ITEM_ID Target (O)84"
+        ],
+        "OutputItems": [
+            {
+                "Id":["(O)544", "(O)545", "(O)546", "(O)550", "(O)551", "(O)559", "(O)560", "(O)561", "(O)564", "(O)567", "(O)572", "(O)573", "(O)577", "(O)541"],
+                "Quantity": 1
+            }
+        ],
+        "OutputChooseBehavior": "TryMatchInput",
+        "MatchInputIgnoreIndexes": [1],
+        "MinutesToProcess": 20
+    },
+    "{{ModId}}_NextMagmaGeode": {
+        "Id": "{{ModId}}_NextMagmaGeode",
+        "GuideBook": {
+            "Category": "Cycling",
+            "Name": "{{i18n:guidebook.NextMagmaGeode.name}}",
+            "Time": "{{i18n:guidebook.NextMagmaGeode.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.NextMagmaGeode.input.1}}",
+                "{{i18n:guidebook.NextMagmaGeode.input.2}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.NextMagmaGeode.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)539 (O)540 (O)543 (O)547 (O)553 (O)554 (O)562 (O)563 (O)565 (O)570 (O)575 (O)578",
+            "ITEM_ID Target (O)82"
+        ],
+        "OutputItems": [
+            {
+                "Id":["(O)540", "(O)543", "(O)547", "(O)553", "(O)554", "(O)562", "(O)563", "(O)565", "(O)570", "(O)575", "(O)578", "(O)539"],
+                "Quantity": 1
+            }
+        ],
+        "OutputChooseBehavior": "TryMatchInput",
+        "MatchInputIgnoreIndexes": [1],
+        "MinutesToProcess": 20
+    },
+
+    /*
+     * Melting Pot
+     */
+
+    "{{ModId}}_RandomBook": {
+        "Id": "{{ModId}}_RandomBook",
+        "GuideBook": {
+            "Category": "MeltingPot",
+            "Name": "{{i18n:guidebook.RandomBook.name}}",
+            "Time": "{{i18n:guidebook.RandomBook.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.RandomBook.input.1}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.RandomBook.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_CATEGORY Target -102 -103",
+            "ITEM_CATEGORY Target -102 -103",
+            "ITEM_CATEGORY Target -102 -103"
+        ],
+        "OutputItems": [
+            {
+                "ItemQuery": "RANDOM_ITEMS (O)",
+                "PerItemCondition": "ITEM_CATEGORY Target -102 -103",
+                "MaxItems": 1
+            }
+        ],
+        "MinutesToProcess": 30
+    },
+    "{{ModId}}_RandomHat": {
+        "Id": "{{ModId}}_RandomHat",
+        "Condition": "PLAYER_HAS_MAIL Host hatter Any",
+        "GuideBook": {
+            "Category": "MeltingPot",
+            "Name": "{{i18n:guidebook.RandomHat.name}}",
+            "Time": "{{i18n:guidebook.RandomHat.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.RandomHat.input.1}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.RandomHat.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_TYPE Target (H)",
+            "ITEM_TYPE Target (H)",
+            "ITEM_TYPE Target (H)"
+        ],
+        "OutputItems": [
+            // note that 'random hat' can generate the pans, which can then be turned into
+            // the tool by wearing/unwearing. this is a feature
+            {
+                "ItemQuery": "RANDOM_ITEMS (H)",
+                "MaxItems": 1
+            }
+        ],
+        "MinutesToProcess": 30
+    },
+    "{{ModId}}_RandomMuseumMineral": {
+        "Id": "{{ModId}}_RandomMuseumMineral",
+        "GuideBook": {
+            "Category": "MeltingPot",
+            "Name": "{{i18n:guidebook.RandomMuseumMineral.name}}",
+            "Time": "{{i18n:guidebook.RandomMuseumMineral.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.RandomMuseumMineral.input.1}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.RandomMuseumMineral.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_CATEGORY Target -12",
+            "ITEM_CATEGORY Target -12",
+            "ITEM_CATEGORY Target -12"
+        ],
+        "OutputItems": [
+            {
+                "ItemQuery": "RANDOM_ITEMS (O)",
+                "PerItemCondition": "ITEM_CATEGORY Target -12",
+                "MaxItems": 1
+            }
+        ],
+        "MinutesToProcess": 30
+    },
+}

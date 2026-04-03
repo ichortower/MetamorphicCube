@@ -1,0 +1,4 @@
+{
+    "{{ModId}}_MailInitial": "[letterbg 2]{{i18n:mail1.textcontent}}%item id (BC){{ModId}}_MetamorphicCube %%[#]{{i18n:mail1.title}}",
+    "{{ModId}}_MailFollowup": "[letterbg 2]{{i18n:mail2.textcontent}}%item id (O){{ModId}}_RecipeBook %%[#]{{i18n:mail2.title}}",
+}

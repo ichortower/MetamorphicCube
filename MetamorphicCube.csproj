@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <Version>0.0.1</Version>
+        <TargetFramework>net6.0</TargetFramework>
+        <EnableHarmony>true</EnableHarmony>
+
+        <ModFolderName>$(MOD_NAME)</ModFolderName>
+    </PropertyGroup>
+
+    <Import Project="..\TowerCore\TowerCore.msbuild" />
+
+    <ItemGroup>
+        <EmbeddedResource Include="embedded/data/strings" ></EmbeddedResource>
+        <EmbeddedResource Include="embedded/data/monsters" ></EmbeddedResource>
+        <EmbeddedResource Include="embedded/data/recipe" ></EmbeddedResource>
+        <EmbeddedResource Include="embedded/data/map" ></EmbeddedResource>
+        <EmbeddedResource Include="embedded/gfx/brute" ></EmbeddedResource>
+        <EmbeddedResource Include="embedded/gfx/sorcerer" ></EmbeddedResource>
+        <EmbeddedResource Include="embedded/gfx/boss" ></EmbeddedResource>
+        <EmbeddedResource Include="embedded/gfx/tas" ></EmbeddedResource>
+        <EmbeddedResource Include="embedded/audio/m1" ></EmbeddedResource>
+        <EmbeddedResource Include="embedded/audio/m2" ></EmbeddedResource>
+        <EmbeddedResource Include="embedded/audio/m3" ></EmbeddedResource>
+        <EmbeddedResource Include="embedded/audio/m4" ></EmbeddedResource>
+        <EmbeddedResource Include="embedded/audio/m5" ></EmbeddedResource>
+        <EmbeddedResource Include="embedded/audio/b1" ></EmbeddedResource>
+        <EmbeddedResource Include="embedded/audio/b2" ></EmbeddedResource>
+        <EmbeddedResource Include="embedded/audio/b3" ></EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Publicize Include="StardewModdingAPI" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Krafs.Publicizer" Version="2.3.0">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.4.0" />
+        <Reference Include="Newtonsoft.Json" HintPath="$(GamePath)\smapi-internal\Newtonsoft.Json.dll" Private="False" />
+        <Reference Include="SkiaSharp" HintPath="$(GamePath)\SkiaSharp.dll" Private="False" />
+    </ItemGroup>
+</Project>
