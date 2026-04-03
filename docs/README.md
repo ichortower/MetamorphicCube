@@ -1,4 +1,6 @@
-# Metamorphic Cube
+![The text 'Metamorphic Cube' on a menu banner. Below is in-game art of a large
+egg and a witch hat, with arrows pointing in and out of a strange blue box and
+over to a void egg.](images/hero.png)
 
 This magical machine can transmute items into different ones! Combine weaker
 things to make them stronger, increase item quality, and more... maybe even
