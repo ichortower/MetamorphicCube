@@ -6,7 +6,7 @@
   "UniqueID": "ichortower.MetamorphicCube",
   "EntryDll": "MetamorphicCube.dll",
   "MinimumApiVersion": "4.1.10",
-  "UpdateKeys": ["Nexus:-1", "GitHub:ichortower/MetamorphicCube"],
+  "UpdateKeys": ["Nexus:44039", "GitHub:ichortower/MetamorphicCube"],
   "Dependencies": [
       {
           "UniqueID": "ichortower.SecretNoteFramework",
