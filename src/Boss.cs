@@ -467,7 +467,7 @@ internal class Boss : Monster
         Game1.currentLocation.temporarySprites.Add(flash);
         flash.endFunction = (int extraInfo) => {
             DelayedAction.functionAfterDelay(() => {
-                if (!Game1.player.mailReceived.Add($"{Main.ModId}_CF_ShengLong")) {
+                if (!Game1.player.mailReceived.Add(Embedded.Strings["Reward.MailId"])) {
                     return;
                 }
                 SObject stardrop = ItemRegistry.Create<SObject>("(O)434");
