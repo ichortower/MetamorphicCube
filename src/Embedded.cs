@@ -376,8 +376,6 @@ internal class Embedded
         Rectangle sourceRect = new(0, 176, 200, 20);
         Vector2 pos = new(Game1.viewport.Width / 2 - sourceRect.Width * 4 / 2,
                                 Game1.viewport.Height / 2 - sourceRect.Height * 4 / 2);
-        pos.X += Game1.viewport.X;
-        pos.Y += Game1.viewport.Y;
         TemporaryAnimatedSprite fadeIn = new(Embedded.Strings["Tas.TextureName"],
                                              sourceRect: sourceRect,
                                              animationInterval: 1500,
@@ -389,6 +387,8 @@ internal class Embedded
              alpha = 0f,
              alphaFade = -0.03f,
              scale = 4f,
+             local = true,
+             layerDepthOffset = 1f,
         };
         TemporaryAnimatedSprite hold = new(Embedded.Strings["Tas.TextureName"],
                                              sourceRect: sourceRect,
@@ -400,6 +400,8 @@ internal class Embedded
                                              flipped: false) {
              delayBeforeAnimationStart = 1500,
              scale = 4f,
+             local = true,
+             layerDepthOffset = 1f,
         };
         TemporaryAnimatedSprite fadeOut = new(Embedded.Strings["Tas.TextureName"],
                                              sourceRect: sourceRect,
@@ -412,6 +414,8 @@ internal class Embedded
              alphaFade = 0.03f,
              delayBeforeAnimationStart = 1500 + 3200,
              scale = 4f,
+             local = true,
+             layerDepthOffset = 1f,
         };
         Game1.currentLocation.temporarySprites.Add(fadeIn);
         Game1.currentLocation.temporarySprites.Add(hold);
