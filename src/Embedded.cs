@@ -257,6 +257,7 @@ internal class Embedded
         t.Start();
     }
 
+    [SmapiEvent]
     internal static void AssetRequested(object sender, AssetRequestedEventArgs e)
     {
         if (e.Name.IsEquivalentTo(Embedded.Strings["Map.AssetName"])) {
@@ -303,11 +304,13 @@ internal class Embedded
         func();
     }
 
+    [SmapiEvent]
     internal static void ReturnedToTitle(object sender, ReturnedToTitleEventArgs e)
     {
         UnloadTheLocation();
     }
 
+    [SmapiEvent]
     internal static void DayEnding(object sender, DayEndingEventArgs e)
     {
         UnloadTheLocation();

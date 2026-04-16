@@ -22,6 +22,7 @@ internal class Spoof
         dn.SetValue(mod, name);
     }
 
+    [SmapiEvent]
     internal static void AssetReady(object sender, AssetReadyEventArgs e)
     {
         if (Target is not null && e.Name.IsEquivalentTo(Target)) {

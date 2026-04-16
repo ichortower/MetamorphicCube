@@ -8,6 +8,7 @@ namespace ichortower.MetamorphicCube;
 
 internal class Shops
 {
+    [SmapiEvent]
     internal static void AssetRequested(object sender, AssetRequestedEventArgs e)
     {
         if (e.Name.IsEquivalentTo("Data/Shops")) {

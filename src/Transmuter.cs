@@ -400,6 +400,7 @@ internal class Transmuter
     }
 
 
+    [SmapiEvent]
     internal static void AssetRequested(object sender, AssetRequestedEventArgs e)
     {
         if (e.Name.IsEquivalentTo("Data/BigCraftables")) {
@@ -440,6 +441,7 @@ internal class Transmuter
         }
     }
 
+    [SmapiEvent]
     internal static void ObjectListChanged(object sender, ObjectListChangedEventArgs e)
     {
         foreach (var kvp in e.Removed) {
@@ -458,6 +460,7 @@ internal class Transmuter
         }
     }
 
+    [SmapiEvent]
     internal static void Warped(object sender, WarpedEventArgs e)
     {
         var objs = e.NewLocation.Objects.Values.Where((obj) => {
