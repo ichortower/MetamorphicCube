@@ -98,6 +98,11 @@ internal class Boss : Monster
     internal Action TeleportAction = null;
     internal int SpecialMoveCooldown = 0;
 
+    public Boss()
+        : this(Vector2.Zero)
+    {
+    }
+
     public Boss(Vector2 position)
         : base(Boss.InternalName, position)
     {

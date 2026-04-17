@@ -55,6 +55,11 @@ internal class Brute : Monster
     internal int AnimFrameTimer = 0;
     internal int VoicePitch = 1200;
 
+    public Brute()
+        : this(Vector2.Zero)
+    {
+    }
+
     public Brute(Vector2 position)
         : base(Brute.InternalName, position)
     {

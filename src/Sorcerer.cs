@@ -69,6 +69,10 @@ internal class Sorcerer : Monster
     internal int ShieldCooldown = 0;
     internal Action SpellCastAction = null;
 
+    public Sorcerer()
+        : this(Vector2.Zero)
+    {
+    }
 
     public Sorcerer(Vector2 position)
         : base(Sorcerer.InternalName, position)
