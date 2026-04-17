@@ -368,6 +368,10 @@ internal class Transmuter
 
     internal static void AddCleanupListener()
     {
+        if (!Game1.IsMasterGame) {
+            Main.Helper.Multiplayer.SendMessage(0, "CleanupListener", new[]{Main.ModId});
+            return;
+        }
         if (Cleaner is not null) {
             return;
         }
@@ -378,12 +382,18 @@ internal class Transmuter
     internal static void CleanupListener(object sender, OneSecondUpdateTickedEventArgs e)
     {
         if (Embedded.TheLocation.farmers.Any()) {
+            Log.Debug($"{Embedded.TheLocation.farmers.Count} farmers in zone");
             return;
         }
         Main.Helper.Events.GameLoop.OneSecondUpdateTicked -= Cleaner;
         Cleaner = null;
         Embedded.UnloadTheLocation();
+        CleanUp();
+        Main.Helper.Multiplayer.SendMessage(0, "CleanUp", new[]{Main.ModId});
+    }
 
+    internal static void CleanUp()
+    {
         Utility.ForEachLocation((GameLocation loc) => {
             bool found = false;
             var objs = loc.Objects.Values.Where(obj =>

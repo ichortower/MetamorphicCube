@@ -191,6 +191,7 @@ internal class Embedded
     internal static GameLocation TheLocation {
         get {
             if (_theLocation is null) {
+                Log.Debug("creating the location");
                 _theLocation = new GameLocation(Embedded.Strings["Map.AssetName"],
                         Embedded.Strings["Location.Id"]);
                 _theLocation.DisplayName = Embedded.Strings["Location.Name"];
@@ -205,7 +206,10 @@ internal class Embedded
                 }
                 // use skull cavern time speed
                 _theLocation.ExtraMillisecondsPerInGameMinute = 200;
-                SpawnFromMap();
+                if (Game1.IsMasterGame) {
+                    SpawnFromMap();
+                }
+                Main.Helper.Multiplayer.SendMessage(0, "CreateLocation", modIDs: new [] {Main.ModId});
             }
             return _theLocation;
         }
@@ -213,6 +217,7 @@ internal class Embedded
 
     internal static void UnloadTheLocation()
     {
+        Log.Debug("unloading the location");
         _theMap = null;
         if (_theLocation is null) {
             return;
@@ -424,6 +429,7 @@ internal class Embedded
 
     internal static void SpawnFromMap()
     {
+        Log.Debug("spawning stuff here");
         GameLocation loc = TheLocation;
         xTile.Layers.Layer back = loc.map.RequireLayer("Back");
         for (int x = 0; x < back.LayerWidth; ++x) {
