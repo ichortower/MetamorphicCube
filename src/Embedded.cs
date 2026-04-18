@@ -190,38 +190,54 @@ internal class Embedded
     internal static GameLocation _theLocation = null;
     internal static GameLocation TheLocation {
         get {
-            if (_theLocation is null) {
-                Log.Debug("creating the location");
-                _theLocation = new GameLocation(Embedded.Strings["Map.AssetName"],
-                        Embedded.Strings["Location.Id"]);
-                _theLocation.DisplayName = Embedded.Strings["Location.Name"];
-                // force reload the map to undo our tile shenanigans
-                _theLocation.loadMap(_theLocation.mapPath.Value, force_reload: true);
-                if (!_registeredActions) {
-                    GameLocation.RegisterTouchAction(Embedded.Strings["Mod.Id"] + "_SpringTrap",
-                            Embedded.SpringTrap);
-                    GameLocation.RegisterTileAction(Embedded.Strings["Mod.Id"] + "_WarpHome",
-                            Embedded.WarpHome);
-                    _registeredActions = true;
-                }
-                // use skull cavern time speed
-                _theLocation.ExtraMillisecondsPerInGameMinute = 200;
-                if (Game1.IsMasterGame) {
-                    SpawnFromMap();
-                }
-                Main.Helper.Multiplayer.SendMessage(0, "CreateLocation", modIDs: new [] {Main.ModId});
+            if (_theLocation is not null) {
+                return _theLocation;
             }
+            string locName = Embedded.Strings["Location.Id"];
+            GameLocation check = Game1.getLocationFromName(locName);
+            if (check is not null) {
+                _theLocation = check;
+                return _theLocation;
+            }
+            Log.Debug("creating the location");
+            Main.Helper.Multiplayer.SendMessage(0, "CreateLocation", modIDs: new[]{Main.ModId});
+            _theLocation = new GameLocation(Embedded.Strings["Map.AssetName"], locName);
+            _theLocation.DisplayName = Embedded.Strings["Location.Name"];
+            // use skull cavern time speed
+            _theLocation.ExtraMillisecondsPerInGameMinute = 200;
+
+            // force reload the map to undo our tile shenanigans
+            _theLocation.loadMap(_theLocation.mapPath.Value, force_reload: true);
+            if (!_registeredActions) {
+                GameLocation.RegisterTouchAction(Embedded.Strings["Mod.Id"] + "_SpringTrap",
+                        Embedded.SpringTrap);
+                GameLocation.RegisterTileAction(Embedded.Strings["Mod.Id"] + "_WarpHome",
+                        Embedded.WarpHome);
+                _registeredActions = true;
+            }
+            if (Game1.IsMasterGame) {
+                SpawnFromMap();
+            }
+
+            Game1.locations.Add(_theLocation);
             return _theLocation;
         }
     }
 
     internal static void UnloadTheLocation()
     {
-        Log.Debug("unloading the location");
         _theMap = null;
+        string locId = Embedded.Strings["Location.Id"];
+        for (int i = Game1.locations.Count - 1; i >= 0; --i) {
+            if (Game1.locations[i].Name.Equals(locId)) {
+                Game1.locations.RemoveAt(i);
+            }
+        }
+        _ = Game1._locationLookup.Remove(locId);
         if (_theLocation is null) {
             return;
         }
+        Log.Debug("unloading the location");
         _theLocation.characters.Clear();
         _theLocation.Objects.Clear();
         _theLocation.TemporarySprites.Clear();

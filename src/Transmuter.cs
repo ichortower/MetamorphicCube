@@ -382,7 +382,6 @@ internal class Transmuter
     internal static void CleanupListener(object sender, OneSecondUpdateTickedEventArgs e)
     {
         if (Embedded.TheLocation.farmers.Any()) {
-            Log.Debug($"{Embedded.TheLocation.farmers.Count} farmers in zone");
             return;
         }
         Main.Helper.Events.GameLoop.OneSecondUpdateTicked -= Cleaner;
