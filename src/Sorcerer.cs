@@ -61,7 +61,15 @@ internal class Sorcerer : Monster
         Cooldown,
     }
 
-    internal SorcererState State = SorcererState.Inactive;
+    internal NetEnum<SorcererState> _state = new(SorcererState.Inactive);
+    internal SorcererState State {
+        get {
+            return _state.Value;
+        }
+        set {
+            _state.Value = value;
+        }
+    }
     internal NetInt StateTimer = new(0);
     internal int AnimIndex = 0;
     internal int AnimFrameTimer = 0;
@@ -81,6 +89,12 @@ internal class Sorcerer : Monster
         this.Sprite.SpriteWidth = 24;
         base.forceOneTileWide.Value = true;
         this.Sprite.UpdateSourceRect();
+    }
+
+    protected override void initNetFields()
+    {
+        base.initNetFields();
+        base.NetFields.AddField(this._state, "_state");
     }
 
     public override void reloadSprite(bool onlyAppearance = false)

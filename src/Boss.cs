@@ -82,14 +82,14 @@ internal class Boss : Monster
         TeleportingIn,
     }
 
-    private BossState _state = BossState.Idle;
+    private NetEnum<BossState> _state = new(BossState.Idle);
     internal BossState State {
         get {
-            return _state;
+            return _state.Value;
         }
         set {
             AnimIndex = -1;
-            _state = value;
+            _state.Value = value;
         }
     }
     internal NetInt StateTimer = new(0);
@@ -116,6 +116,12 @@ internal class Boss : Monster
         this.Sprite.SpriteHeight = 32;
         base.forceOneTileWide.Value = true;
         this.Sprite.UpdateSourceRect();
+    }
+
+    protected override void initNetFields()
+    {
+        base.initNetFields();
+        base.NetFields.AddField(this._state, "_state");
     }
 
     public override void reloadSprite(bool onlyAppearance = false)
