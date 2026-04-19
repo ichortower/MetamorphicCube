@@ -364,7 +364,7 @@ internal class Transmuter
         return Game1.player.team.GetOrCreateGlobalInventoryMutex(storageId);
     }
 
-    internal static System.EventHandler<OneSecondUpdateTickedEventArgs> Cleaner = null;
+    internal static System.EventHandler<WarpedEventArgs> Cleaner = null;
 
     internal static void AddCleanupListener()
     {
@@ -376,15 +376,18 @@ internal class Transmuter
             return;
         }
         Cleaner = Transmuter.CleanupListener;
-        Main.Helper.Events.GameLoop.OneSecondUpdateTicked += Cleaner;
+        Main.Helper.Events.Player.Warped += Cleaner;
     }
 
-    internal static void CleanupListener(object sender, OneSecondUpdateTickedEventArgs e)
+    internal static void CleanupListener(object sender, WarpedEventArgs e)
     {
+        if (!System.Object.ReferenceEquals(e.OldLocation, Embedded.TheLocation)) {
+            return;
+        }
         if (Embedded.TheLocation.farmers.Any()) {
             return;
         }
-        Main.Helper.Events.GameLoop.OneSecondUpdateTicked -= Cleaner;
+        Main.Helper.Events.Player.Warped -= Cleaner;
         Cleaner = null;
         Embedded.UnloadTheLocation();
         CleanUp();
