@@ -37,6 +37,7 @@ internal class Mail
         return true;
     }
 
+    [SmapiEvent]
     internal static void AssetRequested(object sender, AssetRequestedEventArgs e)
     {
         if (e.Name.IsEquivalentTo("Data/Mail")) {

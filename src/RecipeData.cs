@@ -19,11 +19,13 @@ internal class RecipeData
         }
     }
 
+    [SmapiEvent]
     internal static void ReturnedToTitle(object sender, ReturnedToTitleEventArgs e)
     {
         _Data = null;
     }
 
+    [SmapiEvent]
     internal static void AssetsInvalidated(object sender, AssetsInvalidatedEventArgs e)
     {
         if (e.Names.Any(name => name.IsEquivalentTo(RecipeData.DataAsset))) {
@@ -31,6 +33,7 @@ internal class RecipeData
         }
     }
 
+    [SmapiEvent]
     internal static void AssetRequested(object sender, AssetRequestedEventArgs e)
     {
         if (e.Name.IsEquivalentTo(RecipeData.DataAsset)) {

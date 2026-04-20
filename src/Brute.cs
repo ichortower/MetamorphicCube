@@ -49,11 +49,24 @@ internal class Brute : Monster
         Stunned,
     }
 
-    internal BruteState State = BruteState.Idle;
+    internal NetEnum<BruteState> _state = new(BruteState.Idle);
+    internal BruteState State {
+        get {
+            return _state.Value;
+        }
+        set {
+            _state.Value = value;
+        }
+    }
     internal NetInt StateTimer = new(0);
     internal int AnimIndex = 0;
     internal int AnimFrameTimer = 0;
     internal int VoicePitch = 1200;
+
+    public Brute()
+        : this(Vector2.Zero)
+    {
+    }
 
     public Brute(Vector2 position)
         : base(Brute.InternalName, position)
@@ -63,6 +76,12 @@ internal class Brute : Monster
         base.forceOneTileWide.Value = true;
         this.Sprite.UpdateSourceRect();
         this.VoicePitch = 400 + 100 * Game1.random.Next(7);
+    }
+
+    protected override void initNetFields()
+    {
+        base.initNetFields();
+        base.NetFields.AddField(this._state, "_state");
     }
 
     public override void reloadSprite(bool onlyAppearance = false)

@@ -190,23 +190,35 @@ internal class Embedded
     internal static GameLocation _theLocation = null;
     internal static GameLocation TheLocation {
         get {
-            if (_theLocation is null) {
-                _theLocation = new GameLocation(Embedded.Strings["Map.AssetName"],
-                        Embedded.Strings["Location.Id"]);
-                _theLocation.DisplayName = Embedded.Strings["Location.Name"];
-                // force reload the map to undo our tile shenanigans
-                _theLocation.loadMap(_theLocation.mapPath.Value, force_reload: true);
-                if (!_registeredActions) {
-                    GameLocation.RegisterTouchAction(Embedded.Strings["Mod.Id"] + "_SpringTrap",
-                            Embedded.SpringTrap);
-                    GameLocation.RegisterTileAction(Embedded.Strings["Mod.Id"] + "_WarpHome",
-                            Embedded.WarpHome);
-                    _registeredActions = true;
-                }
-                // use skull cavern time speed
-                _theLocation.ExtraMillisecondsPerInGameMinute = 200;
+            if (_theLocation is not null) {
+                return _theLocation;
+            }
+            string locName = Embedded.Strings["Location.Id"];
+            GameLocation check = Game1.getLocationFromName(locName);
+            if (check is not null) {
+                _theLocation = check;
+                return _theLocation;
+            }
+            Main.Helper.Multiplayer.SendMessage(0, "CreateLocation", modIDs: new[]{Main.ModId});
+            _theLocation = new GameLocation(Embedded.Strings["Map.AssetName"], locName);
+            _theLocation.DisplayName = Embedded.Strings["Location.Name"];
+            // use skull cavern time speed
+            _theLocation.ExtraMillisecondsPerInGameMinute = 200;
+
+            // force reload the map to undo our tile shenanigans
+            _theLocation.loadMap(_theLocation.mapPath.Value, force_reload: true);
+            if (!_registeredActions) {
+                GameLocation.RegisterTouchAction(Embedded.Strings["Mod.Id"] + "_SpringTrap",
+                        Embedded.SpringTrap);
+                GameLocation.RegisterTileAction(Embedded.Strings["Mod.Id"] + "_WarpHome",
+                        Embedded.WarpHome);
+                _registeredActions = true;
+            }
+            if (Game1.IsMasterGame) {
                 SpawnFromMap();
             }
+
+            Game1.locations.Add(_theLocation);
             return _theLocation;
         }
     }
@@ -214,6 +226,13 @@ internal class Embedded
     internal static void UnloadTheLocation()
     {
         _theMap = null;
+        string locId = Embedded.Strings["Location.Id"];
+        for (int i = Game1.locations.Count - 1; i >= 0; --i) {
+            if (Game1.locations[i].Name.Equals(locId)) {
+                Game1.locations.RemoveAt(i);
+            }
+        }
+        _ = Game1._locationLookup.Remove(locId);
         if (_theLocation is null) {
             return;
         }
@@ -257,6 +276,7 @@ internal class Embedded
         t.Start();
     }
 
+    [SmapiEvent]
     internal static void AssetRequested(object sender, AssetRequestedEventArgs e)
     {
         if (e.Name.IsEquivalentTo(Embedded.Strings["Map.AssetName"])) {
@@ -303,11 +323,13 @@ internal class Embedded
         func();
     }
 
+    [SmapiEvent]
     internal static void ReturnedToTitle(object sender, ReturnedToTitleEventArgs e)
     {
         UnloadTheLocation();
     }
 
+    [SmapiEvent]
     internal static void DayEnding(object sender, DayEndingEventArgs e)
     {
         UnloadTheLocation();
@@ -373,8 +395,6 @@ internal class Embedded
         Rectangle sourceRect = new(0, 176, 200, 20);
         Vector2 pos = new(Game1.viewport.Width / 2 - sourceRect.Width * 4 / 2,
                                 Game1.viewport.Height / 2 - sourceRect.Height * 4 / 2);
-        pos.X += Game1.viewport.X;
-        pos.Y += Game1.viewport.Y;
         TemporaryAnimatedSprite fadeIn = new(Embedded.Strings["Tas.TextureName"],
                                              sourceRect: sourceRect,
                                              animationInterval: 1500,
@@ -386,6 +406,8 @@ internal class Embedded
              alpha = 0f,
              alphaFade = -0.03f,
              scale = 4f,
+             local = true,
+             layerDepthOffset = 1f,
         };
         TemporaryAnimatedSprite hold = new(Embedded.Strings["Tas.TextureName"],
                                              sourceRect: sourceRect,
@@ -397,6 +419,8 @@ internal class Embedded
                                              flipped: false) {
              delayBeforeAnimationStart = 1500,
              scale = 4f,
+             local = true,
+             layerDepthOffset = 1f,
         };
         TemporaryAnimatedSprite fadeOut = new(Embedded.Strings["Tas.TextureName"],
                                              sourceRect: sourceRect,
@@ -409,6 +433,8 @@ internal class Embedded
              alphaFade = 0.03f,
              delayBeforeAnimationStart = 1500 + 3200,
              scale = 4f,
+             local = true,
+             layerDepthOffset = 1f,
         };
         Game1.currentLocation.temporarySprites.Add(fadeIn);
         Game1.currentLocation.temporarySprites.Add(hold);
@@ -498,25 +524,43 @@ internal class Embedded
         return true;
     }
 
-    // get-fucked-its-hardcoded.jpg
     internal static void SpringTrap(GameLocation loc, string[] args, Farmer who, Vector2 position)
     {
         Rectangle zone = new(35, 14, 14, 13);
         if (loc.farmers.Any(f => !zone.Contains(f.TilePoint))) {
             return;
         }
+        AddTrapGate(loc);
+        Main.Helper.Multiplayer.SendMessage(0, "AddTrapGate", modIDs: new[]{Main.ModId});
+    }
+
+    internal static void RemoveStartingGate(GameLocation loc)
+    {
+        loc.removeMapTile(41, 29, "Buildings");
+        loc.removeMapTile(42, 29, "Buildings");
+        loc.removeMapTile(41, 30, "Buildings");
+        loc.removeMapTile(42, 30, "Buildings");
+        if (Game1.IsMasterGame) {
+            loc.playSound(Embedded.Strings["Location.Gate.OpenSound"]);
+        }
+    }
+
+    internal static void AddTrapGate(GameLocation loc)
+    {
         loc.removeTileProperty(41, 26, "Back", "TouchAction");
         loc.removeTileProperty(42, 26, "Back", "TouchAction");
         loc.setMapTile(41, 27, 848, "Buildings", "outdoors");
         loc.setMapTile(42, 27, 849, "Buildings", "outdoors");
         loc.setMapTile(41, 28, 873, "Buildings", "outdoors");
         loc.setMapTile(42, 28, 874, "Buildings", "outdoors");
-        loc.playSound(Embedded.Strings["Location.Trap.Sound"]);
+        if (Game1.IsMasterGame) {
+            loc.playSound(Embedded.Strings["Location.Trap.Sound"]);
+            loc.characters.Add(new Sorcerer(new Vector2(37, 17) * 64f));
+            loc.characters.Add(new Sorcerer(new Vector2(46, 17) * 64f));
+            Boss theguy = new(new Vector2(41, 16) * 64f);
+            theguy.faceDirection(2);
+            loc.characters.Add(theguy);
+        }
         Game1.changeMusicTrack(Embedded.Strings["Location.Boss.Music"]);
-        loc.characters.Add(new Sorcerer(new Vector2(37, 17) * 64f));
-        loc.characters.Add(new Sorcerer(new Vector2(46, 17) * 64f));
-        Boss theguy = new(new Vector2(41, 16) * 64f);
-        theguy.faceDirection(2);
-        loc.characters.Add(theguy);
     }
 }

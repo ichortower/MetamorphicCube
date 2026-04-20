@@ -364,26 +364,38 @@ internal class Transmuter
         return Game1.player.team.GetOrCreateGlobalInventoryMutex(storageId);
     }
 
-    internal static System.EventHandler<OneSecondUpdateTickedEventArgs> Cleaner = null;
+    internal static System.EventHandler<WarpedEventArgs> Cleaner = null;
 
     internal static void AddCleanupListener()
     {
+        if (!Game1.IsMasterGame) {
+            Main.Helper.Multiplayer.SendMessage(0, "CleanupListener", new[]{Main.ModId});
+            return;
+        }
         if (Cleaner is not null) {
             return;
         }
         Cleaner = Transmuter.CleanupListener;
-        Main.Helper.Events.GameLoop.OneSecondUpdateTicked += Cleaner;
+        Main.Helper.Events.Player.Warped += Cleaner;
     }
 
-    internal static void CleanupListener(object sender, OneSecondUpdateTickedEventArgs e)
+    internal static void CleanupListener(object sender, WarpedEventArgs e)
     {
+        if (!System.Object.ReferenceEquals(e.OldLocation, Embedded.TheLocation)) {
+            return;
+        }
         if (Embedded.TheLocation.farmers.Any()) {
             return;
         }
-        Main.Helper.Events.GameLoop.OneSecondUpdateTicked -= Cleaner;
+        Main.Helper.Events.Player.Warped -= Cleaner;
         Cleaner = null;
         Embedded.UnloadTheLocation();
+        CleanUp();
+        Main.Helper.Multiplayer.SendMessage(0, "CleanUp", new[]{Main.ModId});
+    }
 
+    internal static void CleanUp()
+    {
         Utility.ForEachLocation((GameLocation loc) => {
             bool found = false;
             var objs = loc.Objects.Values.Where(obj =>
@@ -400,6 +412,7 @@ internal class Transmuter
     }
 
 
+    [SmapiEvent]
     internal static void AssetRequested(object sender, AssetRequestedEventArgs e)
     {
         if (e.Name.IsEquivalentTo("Data/BigCraftables")) {
@@ -440,6 +453,7 @@ internal class Transmuter
         }
     }
 
+    [SmapiEvent]
     internal static void ObjectListChanged(object sender, ObjectListChangedEventArgs e)
     {
         foreach (var kvp in e.Removed) {
@@ -458,6 +472,7 @@ internal class Transmuter
         }
     }
 
+    [SmapiEvent]
     internal static void Warped(object sender, WarpedEventArgs e)
     {
         var objs = e.NewLocation.Objects.Values.Where((obj) => {

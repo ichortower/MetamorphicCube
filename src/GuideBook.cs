@@ -40,6 +40,7 @@ internal class GuideBook
         __result = true;
     }
 
+    [SmapiEvent]
     internal static void AssetRequested(object sender, AssetRequestedEventArgs e)
     {
         if (e.Name.IsEquivalentTo("Data/Objects")) {

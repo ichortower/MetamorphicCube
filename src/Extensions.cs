@@ -100,11 +100,8 @@ internal static class Extensions
             return;
         }
         DelayedAction.functionAfterDelay(() => {
-            loc.playSound(Embedded.Strings["Location.Gate.OpenSound"]);
-            loc.removeMapTile(41, 29, "Buildings");
-            loc.removeMapTile(42, 29, "Buildings");
-            loc.removeMapTile(41, 30, "Buildings");
-            loc.removeMapTile(42, 30, "Buildings");
+            Embedded.RemoveStartingGate(loc);
+            Main.Helper.Multiplayer.SendMessage(0, "RemoveStartingGate", modIDs: new[]{Main.ModId});
         }, 2000);
     }
 }

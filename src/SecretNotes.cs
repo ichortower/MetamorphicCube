@@ -37,6 +37,7 @@ namespace ichortower.MetamorphicCube
 internal class SecretNotes
 {
 
+    [SmapiEvent]
     internal static void GameLaunched(object sender, GameLaunchedEventArgs e)
     {
         var api = Main.Helper.ModRegistry.GetApi<ISnfApi>("ichortower.SecretNoteFramework");
