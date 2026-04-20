@@ -441,15 +441,23 @@ internal class Boss : Monster
 
     protected override void localDeathAnimation()
     {
-        Game1.sounds.PlayAll(DieSound, currentLocation, this.Tile, 1200, SoundContext.Default);
-        bool flip = this.FacingDirection switch {
+        Vector3 syncData = new(Position.X, Position.Y, FacingDirection);
+        syncedDeathAnimation(syncData);
+        Main.Helper.Multiplayer.SendMessage(syncData, "syncedDeathAnimation", modIDs: new[]{Main.ModId});
+    }
+
+    internal static void syncedDeathAnimation(Vector3 posFacing)
+    {
+        Game1.playSound(DieSound);
+        bool flip = ((int)posFacing.Z) switch {
             1 or 2 => true,
             _ => false,
         };
         Rectangle sourceRect = new(24, 128, 30, 16);
-        Vector2 pos = this.Position;
+        Vector2 pos = new(posFacing.X, posFacing.Y);
         Vector2 landing = new((flip ? -96f : 96f) + pos.X, pos.Y + 1f);
-        TemporaryAnimatedSprite bounce = new(this.Sprite.textureName.Value,
+        string textureName = $"Characters\\Monsters\\{InternalName}";
+        TemporaryAnimatedSprite bounce = new(textureName,
                 sourceRect: sourceRect,
                 animationInterval: 2000,
                 animationLength: 1,
@@ -463,7 +471,7 @@ internal class Boss : Monster
             xStopCoordinate = (int)landing.X,
             yStopCoordinate = (int)landing.Y,
         };
-        TemporaryAnimatedSprite flash = new(this.Sprite.textureName.Value,
+        TemporaryAnimatedSprite flash = new(textureName,
                 sourceRect: sourceRect,
                 animationInterval: 300,
                 animationLength: 1,
@@ -487,21 +495,15 @@ internal class Boss : Monster
                 Game1.player.addItemByMenuIfNecessary(stardrop);
             }, 720);
             DelayedAction.functionAfterDelay(OpenReturnPortal, 2200);
-            /*
-            DelayedAction.functionAfterDelay(() => {
-                currentLocation.setMapTile((int)RingCenter.X, (int)RingCenter.Y - 2,
-                        125, "Buildings", "outdoors");
-                currentLocation.setTileProperty((int)RingCenter.X, (int)RingCenter.Y - 2,
-                        "Buildings", "Action", Embedded.Strings["Mod.Id"] + "_WarpHome");
-            }, 2000);
-            */
         };
     }
 
-    internal void OpenReturnPortal()
+    internal static void OpenReturnPortal()
     {
         Vector2 position = (RingCenter + new Vector2(-0.5f, -3.5f)) * 64f;
         float layerDepth = (RingCenter.Y - 1f) * 64f / 10000f;
+        // this is dirty but it works
+        GameLocation currentLocation = Game1.currentLocation;
 
         TemporaryAnimatedSprite crack = new(Embedded.Strings["Tas.TextureName"],
                 sourceRect: new Rectangle(0, 80, 32, 48),

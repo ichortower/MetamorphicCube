@@ -199,7 +199,6 @@ internal class Embedded
                 _theLocation = check;
                 return _theLocation;
             }
-            Log.Debug("creating the location");
             Main.Helper.Multiplayer.SendMessage(0, "CreateLocation", modIDs: new[]{Main.ModId});
             _theLocation = new GameLocation(Embedded.Strings["Map.AssetName"], locName);
             _theLocation.DisplayName = Embedded.Strings["Location.Name"];
@@ -237,7 +236,6 @@ internal class Embedded
         if (_theLocation is null) {
             return;
         }
-        Log.Debug("unloading the location");
         _theLocation.characters.Clear();
         _theLocation.Objects.Clear();
         _theLocation.TemporarySprites.Clear();
@@ -445,7 +443,6 @@ internal class Embedded
 
     internal static void SpawnFromMap()
     {
-        Log.Debug("spawning stuff here");
         GameLocation loc = TheLocation;
         xTile.Layers.Layer back = loc.map.RequireLayer("Back");
         for (int x = 0; x < back.LayerWidth; ++x) {
@@ -527,25 +524,43 @@ internal class Embedded
         return true;
     }
 
-    // get-fucked-its-hardcoded.jpg
     internal static void SpringTrap(GameLocation loc, string[] args, Farmer who, Vector2 position)
     {
         Rectangle zone = new(35, 14, 14, 13);
         if (loc.farmers.Any(f => !zone.Contains(f.TilePoint))) {
             return;
         }
+        AddTrapGate(loc);
+        Main.Helper.Multiplayer.SendMessage(0, "AddTrapGate", modIDs: new[]{Main.ModId});
+    }
+
+    internal static void RemoveStartingGate(GameLocation loc)
+    {
+        loc.removeMapTile(41, 29, "Buildings");
+        loc.removeMapTile(42, 29, "Buildings");
+        loc.removeMapTile(41, 30, "Buildings");
+        loc.removeMapTile(42, 30, "Buildings");
+        if (Game1.IsMasterGame) {
+            loc.playSound(Embedded.Strings["Location.Gate.OpenSound"]);
+        }
+    }
+
+    internal static void AddTrapGate(GameLocation loc)
+    {
         loc.removeTileProperty(41, 26, "Back", "TouchAction");
         loc.removeTileProperty(42, 26, "Back", "TouchAction");
         loc.setMapTile(41, 27, 848, "Buildings", "outdoors");
         loc.setMapTile(42, 27, 849, "Buildings", "outdoors");
         loc.setMapTile(41, 28, 873, "Buildings", "outdoors");
         loc.setMapTile(42, 28, 874, "Buildings", "outdoors");
-        loc.playSound(Embedded.Strings["Location.Trap.Sound"]);
+        if (Game1.IsMasterGame) {
+            loc.playSound(Embedded.Strings["Location.Trap.Sound"]);
+            loc.characters.Add(new Sorcerer(new Vector2(37, 17) * 64f));
+            loc.characters.Add(new Sorcerer(new Vector2(46, 17) * 64f));
+            Boss theguy = new(new Vector2(41, 16) * 64f);
+            theguy.faceDirection(2);
+            loc.characters.Add(theguy);
+        }
         Game1.changeMusicTrack(Embedded.Strings["Location.Boss.Music"]);
-        loc.characters.Add(new Sorcerer(new Vector2(37, 17) * 64f));
-        loc.characters.Add(new Sorcerer(new Vector2(46, 17) * 64f));
-        Boss theguy = new(new Vector2(41, 16) * 64f);
-        theguy.faceDirection(2);
-        loc.characters.Add(theguy);
     }
 }

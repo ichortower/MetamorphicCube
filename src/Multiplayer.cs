@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using StardewModdingAPI.Events;
 using StardewValley;
 using ichortower.TowerCore;
@@ -13,6 +14,16 @@ internal class Multiplayer
             return;
         }
         switch (e.Type) {
+        case "RemoveStartingGate":
+            Embedded.RemoveStartingGate(Embedded.TheLocation);
+            break;
+        case "AddTrapGate":
+            Embedded.AddTrapGate(Embedded.TheLocation);
+            break;
+        case "syncedDeathAnimation":
+            Vector3 posData = e.ReadAs<Vector3>();
+            Boss.syncedDeathAnimation(posData);
+            break;
         case "CleanUp":
             Transmuter.CleanUp();
             break;
