@@ -185,6 +185,54 @@
         ],
         "MinutesToProcess": 20
     },
+    "{{ModId}}_Wood": {
+        "Id": "{{ModId}}_Wood",
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.Wood.name}}",
+            "Time": "{{i18n:guidebook.Wood.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.Wood.input.1}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.Wood.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)390, ITEM_STACK Target 3"
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)388"],
+                "Quantity": 2
+            }
+        ],
+        "MinutesToProcess": 20
+    },
+    "{{ModId}}_Stone": {
+        "Id": "{{ModId}}_Stone",
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.Stone.name}}",
+            "Time": "{{i18n:guidebook.Stone.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.Stone.input.1}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.Stone.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ITEM_ID Target (O)388, ITEM_STACK Target 3"
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)390"],
+                "Quantity": 2
+            }
+        ],
+        "MinutesToProcess": 20
+    },
     "{{ModId}}_Hardwood": {
         "Id": "{{ModId}}_Hardwood",
         "GuideBook": {
@@ -235,6 +283,7 @@
     },
     "{{ModId}}_Clay2": {
         "Id": "{{ModId}}_Clay2",
+        "Precedence": 50,
         "GuideBook": {
             "Category": "Fusion",
             "Name": "{{i18n:guidebook.Clay.name}}",
