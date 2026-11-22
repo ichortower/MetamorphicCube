@@ -381,8 +381,41 @@
         ],
         "MinutesToProcess": 60
     },
+    "{{ModId}}_MysticTreeSeed": {
+        "Id": "{{ModId}}_MysticTreeSeed",
+        "Condition": "PLAYER_BASE_FORAGING_LEVEL Current 10",
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.MysticTreeSeed.name}}",
+            "Time": "{{i18n:guidebook.MysticTreeSeed.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.MysticTreeSeed.input.1}}"
+                "{{i18n:guidebook.MysticTreeSeed.input.2}}"
+                "{{i18n:guidebook.MysticTreeSeed.input.3}}"
+                "{{i18n:guidebook.MysticTreeSeed.input.4}}"
+                "{{i18n:guidebook.MysticTreeSeed.input.5}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.MysticTreeSeed.output.1}}"
+            ]
+        }
+        "InputItems": [
+            "ITEM_ID Target (O)309, ITEM_STACK Target 5",
+            "ITEM_ID Target (O)310, ITEM_STACK Target 5",
+            "ITEM_ID Target (O)311, ITEM_STACK Target 5",
+            "ITEM_ID Target (O)292, ITEM_STACK Target 5",
+            "ITEM_ID Target (O)386, ITEM_STACK Target 5",
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)MysticTreeSeed"],
+                "Quantity": 1
+            }
+        ]
+    },
     "{{ModId}}_BlueGrassStarter": {
         "Id": "{{ModId}}_BlueGrassStarter",
+        "Condition": "PLAYER_BASE_FARMING_LEVEL Current 8",
         "GuideBook": {
             "Category": "Fusion",
             "Name": "{{i18n:guidebook.BlueGrassStarter.name}}",
