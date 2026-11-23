@@ -10,10 +10,7 @@ internal sealed class ModMain : Mod
 {
     public override void Entry(IModHelper helper)
     {
-        ichortower.TowerCore.Main.Mod = this;
-        ichortower.TowerCore.Patches.Apply();
-        ichortower.TowerCore.SmapiEvents.Register();
-        ichortower.TowerCore.ConsoleCommands.Register(this.GetType(), out int _);
+        ichortower.TowerCore.Main.Init(this);
 
         GameStateQuery.Register($"{Main.ModId}_COMMUNITY_ROOMS_COMPLETED",
                 Mail.gsq_COMMUNITY_ROOMS_COMPLETED);
