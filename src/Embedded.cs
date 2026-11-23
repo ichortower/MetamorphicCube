@@ -148,6 +148,9 @@ internal class Embedded
     private static Recipe _theRecipe = null;
     internal static Recipe TheRecipe {
         get {
+            if (_theRecipe is not null) {
+                return _theRecipe;
+            }
             string s = GetDecodedString("embedded.data.recipe");
             _theRecipe = JsonConvert.DeserializeObject<Recipe>(s);
             if (Strings.TryGetValue("Mod.Id", out string modId)) {
