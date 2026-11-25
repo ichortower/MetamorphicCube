@@ -42,6 +42,9 @@ internal class HoverHint
     public static void IClickableMenu_drawToolTip_Prefix(IClickableMenu __instance,
             ref string hoverText, ref string hoverTitle, Item hoveredItem)
     {
+        if (hoveredItem is null) {
+            return;
+        }
         Recipe r = Embedded.TheRecipe;
         bool valid = r.InputItems.Any(i => i.ContainsIgnoreCase(hoveredItem.QualifiedItemId));
         if (!valid) {
