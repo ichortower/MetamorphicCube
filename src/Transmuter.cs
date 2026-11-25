@@ -57,6 +57,7 @@ internal class Transmuter
             __result = false;
             return;
         }
+        __result = true;
         if (__instance.MinutesUntilReady > 0) {
             Game1.playSound(Transmuter.ErrorSound);
             __instance.shakeTimer = 100;
