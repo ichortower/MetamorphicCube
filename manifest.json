@@ -1,7 +1,7 @@
 {
   "Name": "Metamorphic Cube",
   "Author": "ichortower",
-  "Description": "Use a magical machine to transform and combine your items into new ones.",
+  "Description": "Use a magical machine to transform and/or combine your items into new ones.",
   "Version": "%ProjectVersion%",
   "UniqueID": "ichortower.MetamorphicCube",
   "EntryDll": "MetamorphicCube.dll",
