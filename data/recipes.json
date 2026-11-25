@@ -308,6 +308,30 @@
         ],
         "MinutesToProcess": 20
     },
+    "{{ModId}}_Fiber": {
+        "Id": "{{ModId}}_Fiber",
+        "GuideBook": {
+            "Category": "Fusion",
+            "Name": "{{i18n:guidebook.Fiber.name}}",
+            "Time": "{{i18n:guidebook.Fiber.time}}",
+            "Inputs": [
+                "{{i18n:guidebook.Fiber.input.1}}"
+            ],
+            "Outputs": [
+                "{{i18n:guidebook.Fiber.output.1}}"
+            ]
+        },
+        "InputItems": [
+            "ANY \"ITEM_CONTEXT_TAG Target category_vegetable color_green\" \"ITEM_ID Target (O)262 (O)300 (O)264 (O)Carrot\"",
+        ],
+        "OutputItems": [
+            {
+                "Id": ["(O)771"],
+                "Quantity": 4
+            }
+        ],
+        "MinutesToProcess": 20
+    },
     "{{ModId}}_Moss": {
         "Id": "{{ModId}}_Moss",
         "GuideBook": {
